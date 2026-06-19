@@ -1,0 +1,18 @@
+# Dataset and trained weights (too large for git)
+data/
+models/
+*.pth
+
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+
+# IDE / OS
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db

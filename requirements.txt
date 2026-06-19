@@ -1,0 +1,17 @@
+# Core deep learning
+torch>=2.0.0
+torchvision>=0.15.0
+
+# Data & metrics
+numpy>=1.24.0
+scikit-learn>=1.3.0
+scipy>=1.11.0
+Pillow>=10.0.0
+
+# Plotting (Agg backend — no GUI needed)
+matplotlib>=3.7.0
+
+# Phase 4 API (also listed in api/requirements.txt)
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6

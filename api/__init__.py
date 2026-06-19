@@ -1,0 +1,1 @@
+"""ForgeVision FastAPI inference server."""

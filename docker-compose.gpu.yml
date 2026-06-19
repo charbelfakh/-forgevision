@@ -1,0 +1,18 @@
+# GPU override — use with: docker compose -f docker-compose.yml -f docker-compose.gpu.yml up --build
+#
+# Prerequisites:
+#   - NVIDIA GPU + drivers
+#   - Docker Desktop with WSL2 GPU support OR Linux nvidia-container-toolkit
+#   - Rebuild api/Dockerfile with CUDA torch wheel (see README)
+
+services:
+  backend:
+    environment:
+      FORGEVISION_DEVICE: cuda
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: 1
+              capabilities: [gpu]

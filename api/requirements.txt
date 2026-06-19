@@ -1,0 +1,4 @@
+# Phase 4 API — install alongside root ML requirements in the same venv
+fastapi>=0.100.0
+uvicorn[standard]>=0.23.0
+python-multipart>=0.0.6

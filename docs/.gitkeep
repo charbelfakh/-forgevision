@@ -1,0 +1,8 @@
+# Screenshot placeholders for README
+
+Save captures here after running the UI:
+
+- `hero_compare.png` — Compare both mode on a carpet defect (recommended hero image)
+- `ui_single.png` — Single-method inference view
+
+Do not commit MVTec AD images (license).

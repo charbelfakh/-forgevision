@@ -1,0 +1,30 @@
+# Root build context for backend; keep images lean but INCLUDE models/.
+
+.git
+.gitignore
+.venv
+venv
+**/__pycache__
+**/*.py[cod]
+**/.pytest_cache
+
+# Frontend (built separately)
+ui/node_modules
+ui/dist
+
+# Dataset (not redistributed; not needed for inference)
+data/
+
+# Large eval artefacts — keep calibrated thresholds for API heatmaps
+eval/
+!eval/thresholds.json
+
+# IDE / OS
+.idea
+.vscode
+*.swp
+.DS_Store
+Thumbs.db
+
+# Agent / cursor
+.cursor

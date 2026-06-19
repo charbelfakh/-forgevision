@@ -1,0 +1,47 @@
+# ForgeVision — one-command local stack (CPU default)
+#
+#   docker compose up --build
+#   Open http://localhost:8080
+#
+# Requires trained weights in models/ before build (gitignored locally).
+
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: api/Dockerfile
+    container_name: forgevision-backend
+    ports:
+      - "8000:8000"
+    environment:
+      FORGEVISION_DEVICE: cpu
+      FORGEVISION_CORS_ORIGINS: "http://localhost:8080,http://127.0.0.1:8080,http://localhost:5173"
+    networks:
+      - forgevision
+
+  frontend:
+    build:
+      context: ./ui
+      dockerfile: Dockerfile
+      args:
+        VITE_API_URL: /api
+    container_name: forgevision-frontend
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    networks:
+      - forgevision
+
+networks:
+  forgevision:
+    driver: bridge
+
+# ---------------------------------------------------------------------------
+# Optional GPU path (NOT default — requires NVIDIA Container Toolkit + CUDA torch)
+# ---------------------------------------------------------------------------
+# 1. Rebuild backend with CUDA PyTorch in api/Dockerfile:
+#      RUN pip install torch torchvision --index-url https://download.pytorch.org/whl/cu124
+# 2. Uncomment below and run: docker compose -f docker-compose.yml -f docker-compose.gpu.yml up
+#
+# See README "GPU inference (optional)" for full steps.

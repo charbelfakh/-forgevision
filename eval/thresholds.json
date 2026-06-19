@@ -1,0 +1,20 @@
+{
+  "bottle::patchcore": {
+    "threshold": 0.526994990262314,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 209
+  },
+  "carpet::autoencoder": {
+    "threshold": 0.004658133228739987,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 280
+  },
+  "carpet::patchcore": {
+    "threshold": 0.5924423455677521,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 280
+  }
+}
