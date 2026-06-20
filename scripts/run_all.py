@@ -20,7 +20,7 @@ sys.path.insert(0, str(PROJECT_ROOT))
 
 import torch  # noqa: E402
 
-from config import (  # noqa: E402
+from forgevision.config import (  # noqa: E402
     BATCH_SIZE,
     CORESET_RATIO,
     DATA_ROOT,
@@ -33,9 +33,9 @@ from config import (  # noqa: E402
     SEED,
     VALID_METHODS,
 )
-from core.aggregate import CANONICAL_CATEGORIES, aggregate_and_save, resolve_categories  # noqa: E402
-from core.runner import run_category  # noqa: E402
-from core.utils import set_seed  # noqa: E402
+from forgevision.core.aggregate import CANONICAL_CATEGORIES, aggregate_and_save, resolve_categories  # noqa: E402
+from forgevision.core.runner import run_category  # noqa: E402
+from forgevision.core.utils import set_seed  # noqa: E402
 
 
 def _format_auroc(value: float) -> str:

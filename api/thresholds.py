@@ -16,9 +16,9 @@ import numpy as np
 import torch
 from torch.utils.data import DataLoader
 
-from config import DATA_ROOT, EVAL_DIR, IMAGE_SIZE
-from core.base import AnomalyMethod
-from core.dataset import EvalTransform, MVTecDataset, build_sample_index
+from forgevision.config import DATA_ROOT, EVAL_DIR, IMAGE_SIZE
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.dataset import EvalTransform, MVTecDataset, build_sample_index
 
 THRESHOLDS_PATH = EVAL_DIR / "thresholds.json"
 THRESHOLD_STD_K = 3.0
@@ -69,6 +69,43 @@ def _calibrate_on_normals(
     return scores
 
 
+def compute_calibration_entry(
+    category: str,
+    method_instance: AnomalyMethod,
+    *,
+    data_root: Path | None = None,
+    image_size: int = IMAGE_SIZE,
+) -> dict:
+    """
+    Fit threshold from train/good scores.
+
+    Returns the full thresholds.json entry (threshold, stats, is_default).
+    Does not read or write the store — shared by the API and offline scripts.
+    """
+    root = data_root or DATA_ROOT
+    normal_scores = _calibrate_on_normals(category, method_instance, root, image_size)
+
+    if len(normal_scores) >= 2:
+        mean = float(np.mean(normal_scores))
+        std = float(np.std(normal_scores))
+        threshold = mean + THRESHOLD_STD_K * std
+        is_default = False
+    else:
+        threshold = FALLBACK_THRESHOLD
+        is_default = True
+        mean = None
+        std = None
+
+    return {
+        "threshold": threshold,
+        "is_default": is_default,
+        "k_std": THRESHOLD_STD_K if not is_default else None,
+        "n_normal_samples": len(normal_scores),
+        "normal_score_mean": mean,
+        "normal_score_std": std,
+    }
+
+
 def get_calibration(
     category: str,
     method: str,
@@ -97,30 +134,16 @@ def get_calibration(
             "is_default": bool(entry.get("is_default", False)),
         }
 
-    normal_scores = _calibrate_on_normals(category, method_instance, root, image_size)
-
-    if len(normal_scores) >= 2:
-        mean = float(np.mean(normal_scores))
-        std = float(np.std(normal_scores))
-        threshold = mean + THRESHOLD_STD_K * std
-        is_default = False
-    else:
-        threshold = FALLBACK_THRESHOLD
-        is_default = True
-        mean = None
-        std = None
-
-    store[entry_key] = {
-        "threshold": threshold,
-        "is_default": is_default,
-        "k_std": THRESHOLD_STD_K if not is_default else None,
-        "n_normal_samples": len(normal_scores),
-        "normal_score_mean": mean,
-        "normal_score_std": std,
-    }
+    entry = compute_calibration_entry(
+        category,
+        method_instance,
+        data_root=root,
+        image_size=image_size,
+    )
+    store[entry_key] = entry
     _save_store(store)
 
-    return {"threshold": threshold, "is_default": is_default}
+    return {"threshold": entry["threshold"], "is_default": entry["is_default"]}
 
 
 def get_threshold(

@@ -13,9 +13,9 @@ import torch
 from PIL import Image
 from torchvision.transforms import functional as TF
 
-from config import IMAGE_SIZE, VALID_METHODS
-from core.heatmap import anomaly_map_to_rgb, blend_overlay
-from core.utils import get_device
+from forgevision.config import IMAGE_SIZE, VALID_METHODS
+from forgevision.core.heatmap import anomaly_map_to_rgb, blend_overlay
+from forgevision.core.utils import get_device
 
 
 def validate_method(method: str) -> None:

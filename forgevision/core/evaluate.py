@@ -9,12 +9,12 @@ from pathlib import Path
 
 import torch
 
-from config import RunConfig
-from core.base import AnomalyMethod
-from core.dataset import make_dataloaders
-from core.metrics import build_metrics_dict, compute_image_auroc, compute_pixel_auroc
-from core.utils import ensure_dir, get_device, set_seed
-from core.visualize import save_example_panel
+from forgevision.config import RunConfig
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.dataset import make_dataloaders
+from forgevision.core.metrics import build_metrics_dict, compute_image_auroc, compute_pixel_auroc
+from forgevision.core.utils import ensure_dir, get_device, set_seed
+from forgevision.core.visualize import save_example_panel
 
 
 def evaluate(cfg: RunConfig, method: AnomalyMethod) -> dict:

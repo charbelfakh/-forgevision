@@ -20,10 +20,11 @@ COPY api/requirements-docker.txt /app/api/requirements-docker.txt
 RUN pip install -r /app/api/requirements-docker.txt
 
 # Application code + trained weights (models/ must exist in build context)
-COPY config.py /app/config.py
-COPY core/ /app/core/
-COPY methods/ /app/methods/
+COPY pyproject.toml /app/pyproject.toml
+COPY forgevision/ /app/forgevision/
 COPY api/ /app/api/
+
+RUN pip install -e /app --no-deps
 
 RUN mkdir -p /app/eval
 COPY eval/thresholds.json /app/eval/thresholds.json

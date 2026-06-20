@@ -1,14 +1,14 @@
 """
 Central configuration for ForgeVision anomaly detection.
 
-All paths are relative to the project root (the folder containing this file).
+All paths are relative to the repository root (parent of the forgevision package).
 Scripts override these via CLI flags — see scripts/run_*.py.
 """
 
 from dataclasses import dataclass, field
 from pathlib import Path
 
-PROJECT_ROOT = Path(__file__).resolve().parent
+PROJECT_ROOT = Path(__file__).resolve().parent.parent
 
 # ---------------------------------------------------------------------------
 # Data

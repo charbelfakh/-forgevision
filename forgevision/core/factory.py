@@ -2,11 +2,11 @@
 
 from __future__ import annotations
 
-from config import RunConfig
-from core.base import AnomalyMethod
-from core.utils import get_device
-from methods.autoencoder.method import AutoencoderMethod
-from methods.patchcore.method import PatchCoreMethod
+from forgevision.config import RunConfig
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.utils import get_device
+from forgevision.methods.autoencoder.method import AutoencoderMethod
+from forgevision.methods.patchcore.method import PatchCoreMethod
 
 
 def create_method(cfg: RunConfig) -> AnomalyMethod:

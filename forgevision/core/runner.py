@@ -6,11 +6,11 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from config import RunConfig, checkpoint_path
-from core.base import AnomalyMethod
-from core.dataset import make_dataloaders
-from core.evaluate import evaluate
-from core.factory import create_method
+from forgevision.config import RunConfig, checkpoint_path
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.dataset import make_dataloaders
+from forgevision.core.evaluate import evaluate
+from forgevision.core.factory import create_method
 
 
 def run_category(cfg: RunConfig, *, retrain: bool) -> dict:

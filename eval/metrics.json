@@ -2,7 +2,7 @@
   "category": "zipper",
   "method": "autoencoder",
   "image_auroc": 0.46717436974789917,
-  "pixel_auroc": 0.8223395588845949,
+  "pixel_auroc": 0.8223395593570744,
   "image_score_mode": "mean",
   "gaussian_sigma": 4.0,
   "num_test_images": 151,

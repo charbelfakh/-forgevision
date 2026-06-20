@@ -13,7 +13,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np
 
-from core.utils import ensure_dir
+from forgevision.core.utils import ensure_dir
 
 CANONICAL_CATEGORIES: tuple[str, ...] = (
     "bottle",

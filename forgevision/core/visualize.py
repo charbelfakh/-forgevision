@@ -13,7 +13,7 @@ import matplotlib.pyplot as plt  # noqa: E402
 import numpy as np
 import torch
 
-from core.utils import ensure_dir
+from forgevision.core.utils import ensure_dir
 
 
 def tensor_to_numpy_image(tensor: torch.Tensor) -> np.ndarray:

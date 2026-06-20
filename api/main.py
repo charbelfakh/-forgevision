@@ -10,7 +10,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
-# Project root on sys.path so `config`, `core`, `methods` import cleanly.
+# Project root on sys.path so `api` and repo-relative paths resolve when not installed.
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
@@ -22,7 +22,7 @@ from api.checkpoints import discover_categories, resolve_checkpoint
 from api.inference import load_image_tensor, run_inference, validate_method
 from api.model_cache import get_method
 from api.thresholds import get_calibration
-from config import MODELS_DIR
+from forgevision.config import MODELS_DIR
 
 import os
 

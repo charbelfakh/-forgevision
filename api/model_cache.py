@@ -7,9 +7,9 @@ from __future__ import annotations
 import threading
 from pathlib import Path
 
-from config import MODELS_DIR, RunConfig
-from core.base import AnomalyMethod
-from core.factory import create_method
+from forgevision.config import MODELS_DIR, RunConfig
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.factory import create_method
 
 from api.checkpoints import resolve_checkpoint
 

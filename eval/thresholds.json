@@ -16,5 +16,221 @@
     "is_default": false,
     "k_std": 3.0,
     "n_normal_samples": 280
+  },
+  "bottle::autoencoder": {
+    "threshold": 0.0012696415607744316,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 209,
+    "normal_score_mean": 0.0008748329470700553,
+    "normal_score_std": 0.0001316028712347921
+  },
+  "cable::autoencoder": {
+    "threshold": 0.005291139132558034,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 224,
+    "normal_score_mean": 0.0031900750701814623,
+    "normal_score_std": 0.0007003546874588571
+  },
+  "cable::patchcore": {
+    "threshold": 0.7812127321484582,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 224,
+    "normal_score_mean": 0.7531139547271388,
+    "normal_score_std": 0.0093662591404398
+  },
+  "capsule::autoencoder": {
+    "threshold": 0.0007173087784649564,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 219,
+    "normal_score_mean": 0.0005119003575575883,
+    "normal_score_std": 6.846947363578936e-05
+  },
+  "capsule::patchcore": {
+    "threshold": 0.5596390953915223,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 219,
+    "normal_score_mean": 0.5314177560479674,
+    "normal_score_std": 0.00940711311451831
+  },
+  "grid::autoencoder": {
+    "threshold": 0.005958661438591627,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 264,
+    "normal_score_mean": 0.003334768331225143,
+    "normal_score_std": 0.0008746310357888281
+  },
+  "grid::patchcore": {
+    "threshold": 0.5824496712288113,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 264,
+    "normal_score_mean": 0.5503178947802746,
+    "normal_score_std": 0.010710592149512253
+  },
+  "hazelnut::autoencoder": {
+    "threshold": 0.0008223888423728387,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 391,
+    "normal_score_mean": 0.0004193856110459889,
+    "normal_score_std": 0.00013433441044228325
+  },
+  "hazelnut::patchcore": {
+    "threshold": 0.7738750566679847,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 391,
+    "normal_score_mean": 0.7481282920483738,
+    "normal_score_std": 0.008582254873203615
+  },
+  "leather::autoencoder": {
+    "threshold": 0.0009512971313868201,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 245,
+    "normal_score_mean": 0.0005997128589839047,
+    "normal_score_std": 0.00011719475746763845
+  },
+  "leather::patchcore": {
+    "threshold": 0.5308390377769944,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 245,
+    "normal_score_mean": 0.5145483554625998,
+    "normal_score_std": 0.00543022743813153
+  },
+  "metal_nut::autoencoder": {
+    "threshold": 0.0027870465025075595,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 220,
+    "normal_score_mean": 0.001873853571966968,
+    "normal_score_std": 0.00030439764351353053
+  },
+  "metal_nut::patchcore": {
+    "threshold": 0.7418626078664367,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 220,
+    "normal_score_mean": 0.7151058183474974,
+    "normal_score_std": 0.008918929839646423
+  },
+  "pill::autoencoder": {
+    "threshold": 0.0004497516699092154,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 267,
+    "normal_score_mean": 0.0003125265564190482,
+    "normal_score_std": 4.5741704496722415e-05
+  },
+  "pill::patchcore": {
+    "threshold": 0.6833687726190696,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 267,
+    "normal_score_mean": 0.6557277867410067,
+    "normal_score_std": 0.009213661959354302
+  },
+  "screw::autoencoder": {
+    "threshold": 0.0016314583647732842,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 320,
+    "normal_score_mean": 0.0010320979019525112,
+    "normal_score_std": 0.0001997868209402577
+  },
+  "screw::patchcore": {
+    "threshold": 0.6767663725313686,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 320,
+    "normal_score_mean": 0.6546873401850462,
+    "normal_score_std": 0.007359677448774148
+  },
+  "tile::autoencoder": {
+    "threshold": 0.0037216508388491954,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 230,
+    "normal_score_mean": 0.0027671159305812224,
+    "normal_score_std": 0.000318178302755991
+  },
+  "tile::patchcore": {
+    "threshold": 0.7119151973510852,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 230,
+    "normal_score_mean": 0.6921017408370972,
+    "normal_score_std": 0.006604485504662681
+  },
+  "toothbrush::autoencoder": {
+    "threshold": 0.0022201131332569377,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 60,
+    "normal_score_mean": 0.0018369608170663318,
+    "normal_score_std": 0.00012771743873020205
+  },
+  "toothbrush::patchcore": {
+    "threshold": 0.7038443751012394,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 60,
+    "normal_score_mean": 0.6766245037317276,
+    "normal_score_std": 0.009073290456503952
+  },
+  "transistor::autoencoder": {
+    "threshold": 0.001137219646839805,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 213,
+    "normal_score_mean": 0.0007796979797872859,
+    "normal_score_std": 0.0001191738890175064
+  },
+  "transistor::patchcore": {
+    "threshold": 0.7342670328536144,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 213,
+    "normal_score_mean": 0.7015529789835074,
+    "normal_score_std": 0.010904684623368972
+  },
+  "wood::autoencoder": {
+    "threshold": 0.0014558719318118734,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 247,
+    "normal_score_mean": 0.000802067048005903,
+    "normal_score_std": 0.00021793496126865675
+  },
+  "wood::patchcore": {
+    "threshold": 0.6908012817592606,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 247,
+    "normal_score_mean": 0.6692330243616451,
+    "normal_score_std": 0.007189419132538473
+  },
+  "zipper::autoencoder": {
+    "threshold": 0.002672527351106395,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 240,
+    "normal_score_mean": 0.0017472568705367544,
+    "normal_score_std": 0.0003084234935232135
+  },
+  "zipper::patchcore": {
+    "threshold": 0.49691696478995295,
+    "is_default": false,
+    "k_std": 3.0,
+    "n_normal_samples": 240,
+    "normal_score_mean": 0.47261860519647597,
+    "normal_score_std": 0.008099453197825662
   }
 }

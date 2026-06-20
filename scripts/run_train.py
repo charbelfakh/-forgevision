@@ -16,7 +16,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 
-from config import (  # noqa: E402
+from forgevision.config import (  # noqa: E402
     BATCH_SIZE,
     CORESET_RATIO,
     DATA_ROOT,
@@ -33,8 +33,8 @@ from config import (  # noqa: E402
     VALID_METHODS,
     RunConfig,
 )
-from core.runner import train_only  # noqa: E402
-from core.utils import set_seed  # noqa: E402
+from forgevision.core.runner import train_only  # noqa: E402
+from forgevision.core.utils import set_seed  # noqa: E402
 
 
 def parse_args() -> RunConfig:

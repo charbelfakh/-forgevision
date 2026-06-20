@@ -18,12 +18,12 @@ import torch
 import torch.nn.functional as F
 from torch.utils.data import DataLoader
 
-from config import RunConfig
-from core.base import AnomalyMethod
-from core.utils import ensure_dir, smooth_anomaly_map
-from methods.patchcore.backbone import PatchCoreBackbone
-from methods.patchcore.coreset import greedy_coreset_indices
-from methods.patchcore.nn_search import nearest_neighbour_distances
+from forgevision.config import RunConfig
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.utils import ensure_dir, smooth_anomaly_map
+from forgevision.methods.patchcore.backbone import PatchCoreBackbone
+from forgevision.methods.patchcore.coreset import greedy_coreset_indices
+from forgevision.methods.patchcore.nn_search import nearest_neighbour_distances
 
 
 class PatchCoreMethod(AnomalyMethod):

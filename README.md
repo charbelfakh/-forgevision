@@ -70,12 +70,11 @@ The platform is benchmarked on all **15 MVTec AD** categories (one model per cat
 
 ## Heatmaps (API)
 
-Heatmap coloring is **verdict-based**: the decision threshold picks the colormap branch only (badge logic uses `score > threshold` separately).
+Heatmap **color** uses per-image **percentile scaling** (see `forgevision/core/heatmap.py`): typical patch scores anchor at the **60th percentile** (blue/green background), and only the **99th percentile and above** saturate to red. That adapts to each category’s absolute score scale — uniform textures (carpet) and noisy objects (pill, capsule) both show a cool field with a localized hot spot on the defect.
 
-- **DEFECT** (`score >= threshold`): per-image min/max jet colormap — localized red on cool background
-- **NORMAL** (`score < threshold`): map clamped to the blue end of jet — calm pass visualization
+The **PASS/DEFECT badge** is separate: it still uses the calibrated decision threshold (`score >= threshold`). Percentile mapping affects colormap only, not scoring or verdicts.
 
-Thresholds calibrated from `train/good/` scores (`mean + 3σ`) and cached in `eval/thresholds.json`.
+Thresholds are fit from `train/good/` scores (`mean + 3σ`, k=3) and stored in `eval/thresholds.json`. Precompute all categories offline before Docker build (see Run it below) — the API reads the file; it does not calibrate on first request.
 
 ---
 
@@ -131,6 +130,37 @@ python scripts/run_all.py --method patchcore
 
 Weights land in `models/`; evaluation tables in `eval/`.
 
+4. Precompute decision thresholds for every trained category × method (required for Docker — bakes `eval/thresholds.json` into the image):
+
+```powershell
+python scripts/compute_thresholds.py --overwrite
+```
+
+Uses the same calibration logic as the API (`api/thresholds.py`); expect ~30 entries (15 categories × autoencoder + patchcore) when all weights exist.
+
+### Use as a library
+
+ForgeVision is pip-installable; other projects can add it as a dependency (editable locally or from a git/path URL).
+
+```powershell
+pip install -e .
+```
+
+```python
+import torch
+from forgevision.config import RunConfig
+from forgevision.core.factory import create_method
+
+cfg = RunConfig(category="bottle", method="patchcore")
+method = create_method(cfg)
+method.load(cfg.models_dir / "bottle_patchcore.pth")
+
+image_tensor = torch.rand(1, 3, cfg.image_size, cfg.image_size)  # (B, 3, H, W) in [0, 1]
+image_scores, anomaly_maps = method.score(image_tensor)
+```
+
+Library dependencies are declared in `pyproject.toml` (ML stack only). API/UI extras stay in `requirements.txt` and `api/requirements.txt`.
+
 ---
 
 ## Architecture
@@ -151,7 +181,7 @@ scripts/       run_train.py · run_eval.py · run_all.py
 
 The API and multi-category orchestrator call **only** the `AnomalyMethod` interface — no method-specific branches beyond construction. Adding a new detector = implement the interface in `methods/yourmethod/`, register in `core/factory.py`, train with `--method yourmethod`.
 
-**Phase journey:** conv-autoencoder baseline → modular refactor + PatchCore + head-to-head eval → FastAPI + React UI → Docker + verdict-based heatmaps.
+**Phase journey:** conv-autoencoder baseline → modular refactor + PatchCore + head-to-head eval → FastAPI + React UI → Docker + percentile-based heatmaps.
 
 ### Limitations & next steps
 
@@ -165,28 +195,19 @@ The API and multi-category orchestrator call **only** the `AnomalyMethod` interf
 ## Project structure
 
 ```
-forgevision/
-├── config.py
+├── pyproject.toml         # pip install -e .
 ├── docker-compose.yml
 ├── docker-compose.gpu.yml
-├── core/
-│   ├── base.py           # AnomalyMethod ABC
-│   ├── dataset.py        # MVTec AD loader
-│   ├── metrics.py        # AUROC
-│   ├── heatmap.py        # Verdict-based heatmap coloring
-│   ├── evaluate.py
-│   ├── aggregate.py
-│   ├── factory.py
-│   └── runner.py
-├── methods/
-│   ├── autoencoder/
-│   └── patchcore/
+├── forgevision/           # pip-installable library
+│   ├── config.py
+│   ├── core/              # AnomalyMethod ABC, dataset, metrics, runner, …
+│   └── methods/           # autoencoder/, patchcore/
 ├── api/
 ├── ui/
 ├── scripts/
-├── models/               # gitignored — trained weights
-├── data/                 # gitignored — MVTec AD
-└── eval/                 # metrics, comparison tables, plots
+├── models/                # gitignored — trained weights
+├── data/                  # gitignored — MVTec AD
+└── eval/                  # metrics, comparison tables, plots
 ```
 
 ---

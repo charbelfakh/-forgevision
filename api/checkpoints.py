@@ -11,7 +11,7 @@ from __future__ import annotations
 
 from pathlib import Path
 
-from config import MODELS_DIR, VALID_METHODS
+from forgevision.config import MODELS_DIR, VALID_METHODS
 
 
 def resolve_checkpoint(

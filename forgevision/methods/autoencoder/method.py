@@ -14,11 +14,11 @@ import torch.nn as nn
 from torch.amp import GradScaler, autocast
 from torch.utils.data import DataLoader
 
-from config import RunConfig
-from core.base import AnomalyMethod
-from core.utils import compute_reconstruction_anomaly_map, ensure_dir, image_score
-from core.visualize import save_loss_curve
-from methods.autoencoder.model import ConvAutoencoder
+from forgevision.config import RunConfig
+from forgevision.core.base import AnomalyMethod
+from forgevision.core.utils import compute_reconstruction_anomaly_map, ensure_dir, image_score
+from forgevision.core.visualize import save_loss_curve
+from forgevision.methods.autoencoder.model import ConvAutoencoder
 
 
 class AutoencoderMethod(AnomalyMethod):
